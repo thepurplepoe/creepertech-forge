@@ -44,7 +44,7 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void registerClientEvents() {
-		Helper.WriteModMessage("Actually Registering Shit");
+		Helper.WriteModMessage("Actually Registering Baker");
 		MinecraftForge.EVENT_BUS.register(new CTModelBaker());
 	}
 }
