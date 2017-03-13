@@ -1,6 +1,7 @@
 package creepertech.client.proxy;
 
 import creepertech.client.model.CTModelBaker;
+import creepertech.client.model.CTModelLoader;
 import creepertech.client.renderer.entity.RenderCTCreeper;
 import creepertech.entity.EntityCTCreeper;
 import creepertech.entity.EntityNuclearCreeper;
@@ -13,6 +14,7 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -46,6 +48,8 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void registerClientEvents() {
+		ModelLoaderRegistry.registerLoader(new CTModelLoader());
+		
 		Helper.WriteModMessage("Actually Registering Baker");
 		MinecraftForge.EVENT_BUS.register(new CTModelBaker());
 	}

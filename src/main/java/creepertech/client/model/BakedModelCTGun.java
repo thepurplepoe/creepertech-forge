@@ -24,11 +24,13 @@ public class BakedModelCTGun implements IBakedModel {
 	public IBakedModel baseModel;
 	public IBakedModel attachmentModel;
 	public IModel attachment;
+	public static ModelResourceLocation attachmentModelLocation = new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name + "meme");
+	public static ModelResourceLocation baseModelLocation = new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name);
 	
 	public BakedModelCTGun(IBakedModel basemodel) {
 		baseModel = basemodel;
 		try {
-			attachment = ModelLoaderRegistry.getModel(new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name + "meme"));
+			attachment = ModelLoaderRegistry.getModel(attachmentModelLocation);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

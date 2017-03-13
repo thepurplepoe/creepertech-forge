@@ -8,6 +8,7 @@ import com.google.common.base.Function;
 import creepertech.CreeperTech;
 import creepertech.util.Reference;
 import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.block.model.ModelBlock;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.VertexFormat;
@@ -16,7 +17,14 @@ import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.common.model.IModelState;
 
 public class ModelCTAttachment implements IModel {
-
+    private final ResourceLocation location;
+    private final ModelBlock model;
+    
+    public ModelCTAttachment(ResourceLocation loc, ModelBlock mod) {
+    	location = loc;
+    	model = mod;
+    }
+	
 	@Override
 	public Collection<ResourceLocation> getDependencies() {
 		ModelResourceLocation meme = new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name + "meme");
