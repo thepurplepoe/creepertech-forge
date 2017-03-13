@@ -19,7 +19,7 @@ public class CTModelBaker {
 		Object object = event.getModelRegistry().getObject(model);
 		if (object != null) {
 			Helper.WriteModMessage("Really bakin");
-			ModelCTTest customModel = new ModelCTTest();
+			BakedModelCTGun customModel = new BakedModelCTGun((IBakedModel)object);
 			event.getModelRegistry().putObject(model, customModel);
 		}
 	}

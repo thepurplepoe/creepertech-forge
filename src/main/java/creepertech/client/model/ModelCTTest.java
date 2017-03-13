@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.client.model.ModelLoader;
 
 public class ModelCTTest implements IBakedModel {
 	public IBakedModel base;
@@ -24,8 +25,9 @@ public class ModelCTTest implements IBakedModel {
 	
 	public ModelCTTest() {
         //sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(Reference.modID + ":items/blank");
-
-		base = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getModelManager().getModel(new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name + "meme"));
+		//ModelLoader m = new ModelLoader()
+		//base = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getModelManager().getModel(new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name + "meme"));
+		//ModelLoaderRegistry.
 	}
 	
 	@Override

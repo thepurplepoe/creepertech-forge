@@ -7,6 +7,7 @@ import creepertech.entity.EntityNuclearCreeper;
 import creepertech.proxy.CommonProxy;
 import creepertech.util.Helper;
 import creepertech.util.Reference;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
