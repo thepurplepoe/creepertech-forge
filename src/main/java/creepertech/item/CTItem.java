@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 
 public class CTItem extends Item {
 
-	protected String name;
+	public String name;
 
 	public CTItem(String name) {
 		this.name = name;

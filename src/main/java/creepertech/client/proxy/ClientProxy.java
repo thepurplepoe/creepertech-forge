@@ -20,7 +20,6 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void registerEntityRenderers() {
-		Helper.WriteModMessage("Actually Registering Entities");
 		RenderingRegistry.registerEntityRenderingHandler(EntityCTCreeper.class, new IRenderFactory<EntityCTCreeper>() {
 			@Override
 			public Render<EntityCTCreeper> createRenderFor(RenderManager manager)
@@ -39,7 +38,9 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void registerItemRenderer(Item item, String id) {	
-		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(Reference.modID + ":" + id));
+		ModelResourceLocation m = new ModelResourceLocation(Reference.modID + ":" + id);
+		Helper.WriteModMessage("Registering Item with model " + m.toString());
+		ModelLoader.setCustomModelResourceLocation(item, 0, m);
 	}
 	
 	@Override
