@@ -1,0 +1,10 @@
+{ 
+	"creeper.cenastart": {
+		"category": "entity",
+		"sounds": [ { "name": "creepertech:cena/cenastart", "stream": true } ]
+	},
+	"creeper.cenaend": {
+		"category": "entity",
+		"sounds": [ { "name": "creepertech:cena/cenaend", "stream": true } ]
+	}
+} 

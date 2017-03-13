@@ -1,0 +1,16 @@
+[
+{
+  "modid": "creepertech",
+  "name": "CreeperTech",
+  "description": "well, this exists",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Niugnepybbuhc"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
