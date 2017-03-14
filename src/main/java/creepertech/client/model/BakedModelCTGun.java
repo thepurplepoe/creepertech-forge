@@ -27,8 +27,9 @@ public class BakedModelCTGun implements IBakedModel {
 	public static ModelResourceLocation attachmentModelLocation = new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name + "meme");
 	public static ModelResourceLocation baseModelLocation = new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name);
 	
-	public BakedModelCTGun(IBakedModel basemodel) {
+	public BakedModelCTGun(IBakedModel basemodel, IBakedModel attach) {
 		baseModel = basemodel;
+		
 		try {
 			attachment = ModelLoaderRegistry.getModel(attachmentModelLocation);
 		} catch (Exception e) {
@@ -43,6 +44,8 @@ public class BakedModelCTGun implements IBakedModel {
             }
         };
 		attachmentModel = attachment.bake(attachment.getDefaultState(), new VertexFormat(), textureGetter);
+		
+		//attachmentModel = attach;
 	}
 	
 	@Override

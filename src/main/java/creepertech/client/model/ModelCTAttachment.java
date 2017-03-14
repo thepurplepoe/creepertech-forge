@@ -44,6 +44,7 @@ public class ModelCTAttachment implements IModel {
 	@Override
 	public IBakedModel bake(IModelState state, VertexFormat format,
 			Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
+		
 		return null;
 	}
 
