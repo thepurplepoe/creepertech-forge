@@ -22,27 +22,21 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.client.model.pipeline.LightUtil;
 
 public class BakedModelCTGunManual implements IBakedModel {
-	public IBakedModel base;
 	
     private TextureAtlasSprite sprite;
 	
-	public BakedModelCTGunManual(IBakedModel bse) {
-		base = bse;
+	public BakedModelCTGunManual() {
         sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(Reference.modID + ":items/cttest");
-		//base = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getModelManager().getModel(new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name + "meme"));
 	}	
 	
 	@Override
 	public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) {
 		List<BakedQuad> quads = new ArrayList<BakedQuad>();
 
-        Cube cube = new Cube(new Vec3d(0.01,0.01,0.01), new Vec3d(0.5,0.5,-2));        
+        Cube cube = new Cube(new Vec3d(0.25, 0.25, 0.5), new Vec3d(0.5,0.5,-1)); 
+        cube.addChild(new Cube(cube, new Vec3d(0.25, -0.25, -0.5), new Vec3d(0.5, 0.5, -0.25)));
         
         cube.startTransform();
-        
-
-        cube.rotateX(CTItem.rot);
-        cube.translate(new Vec3d(0.25, 0.25, 0.5));
         
         quads = cube.addQuads(quads, sprite);
         
@@ -69,7 +63,7 @@ public class BakedModelCTGunManual implements IBakedModel {
 
 	@Override
 	public TextureAtlasSprite getParticleTexture() {
-		return base.getParticleTexture();
+		return sprite;
 	}
 
 	@Override

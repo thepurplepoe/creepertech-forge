@@ -23,6 +23,37 @@ public class MatrixHelper {
 		return m;
 	}
 	
+	public static Matrix4x4 getYRotationMatrix(double angleindegrees) {
+		double angle = angleindegrees * Math.PI / 180;
+		Matrix4x4 m = new Matrix4x4();
+		m.f=m.p=1;
+		m.a = Math.cos(angle);
+		m.c = Math.sin(angle);
+		m.i = -1 * Math.sin(angle);
+		m.k = Math.cos(angle);
+		return m;
+	}
+	
+	public static Matrix4x4 getZRotationMatrix(double angleindegrees) {
+		double angle = angleindegrees * Math.PI / 180;
+		Matrix4x4 m = new Matrix4x4();
+		m.k=m.p=1;
+		m.a = Math.cos(angle);
+		m.b = -1 * Math.sin(angle);
+		m.e = Math.sin(angle);
+		m.f = Math.cos(angle);
+		return m;
+	}
+	
+	public static Matrix4x4 getScaleMatrix(Vec3d scalefactor) {
+		Matrix4x4 m = new Matrix4x4();
+		m.p=1;
+		m.a = scalefactor.xCoord;
+		m.f = scalefactor.yCoord;
+		m.k = scalefactor.zCoord;
+		return m;
+	}
+	
 	public static Vec3d transformCoordinates(Matrix4x4 t, Vec3d c) {
 		Matrix1x4 coord = new Matrix1x4();
 		coord.a = c.xCoord;

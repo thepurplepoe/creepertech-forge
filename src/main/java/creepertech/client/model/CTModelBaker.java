@@ -15,12 +15,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class CTModelBaker {
 	@SubscribeEvent
 	public void onModelBakeEvent(ModelBakeEvent event) {
-		Helper.WriteModMessage("We're bakin boys");
 		ModelResourceLocation model = new ModelResourceLocation(Reference.modID + ":" + CreeperTech.ItemCTTest.name);
 		Object object = event.getModelRegistry().getObject(model);
 		if (object != null) {
-			Helper.WriteModMessage("Really bakin");
-			BakedModelCTGunManual customModel = new BakedModelCTGunManual((IBakedModel)object);
+			BakedModelCTGunManual customModel = new BakedModelCTGunManual();
 			event.getModelRegistry().putObject(model, customModel);
 		}
 	}
