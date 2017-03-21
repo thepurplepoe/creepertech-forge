@@ -105,7 +105,7 @@ public class Cube {
 	
 	public void rotateY(double angle) {
 		for (int i = 0; i < children.size(); i++) {
-			children.get(i).rotateX(angle);
+			children.get(i).rotateY(angle);
 		}
 		for (int i = 0; i < points.length; i++) {
 			points[i] = MatrixHelper.transformCoordinates(MatrixHelper.getYRotationMatrix(angle), points[i]);
@@ -114,10 +114,19 @@ public class Cube {
 	
 	public void rotateZ(double angle) {
 		for (int i = 0; i < children.size(); i++) {
-			children.get(i).rotateX(angle);
+			children.get(i).rotateZ(angle);
 		}
 		for (int i = 0; i < points.length; i++) {
 			points[i] = MatrixHelper.transformCoordinates(MatrixHelper.getZRotationMatrix(angle), points[i]);
+		}
+	}
+	
+	public void scale(Vec3d transform) {
+		for (int i = 0; i < children.size(); i++) {
+			children.get(i).scale(transform);
+		}
+		for (int i = 0; i < points.length; i++) {
+			points[i] = MatrixHelper.transformCoordinates(MatrixHelper.getScaleMatrix(transform), points[i]);
 		}
 	}
 }
