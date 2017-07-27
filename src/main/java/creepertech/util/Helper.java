@@ -3,8 +3,6 @@ package creepertech.util;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 
 public class Helper {

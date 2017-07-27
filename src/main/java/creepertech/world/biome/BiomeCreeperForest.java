@@ -2,7 +2,6 @@ package creepertech.world.biome;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.BiomeProperties;
 
 public class BiomeCreeperForest extends Biome
 {

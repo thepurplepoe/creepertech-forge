@@ -1,14 +1,5 @@
 package creepertech.util;
 
-import java.util.Random;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentString;
-
 public class Reference {
 	public static final String modID = "creepertech";
 	public static final String modName = "CreeperTech";

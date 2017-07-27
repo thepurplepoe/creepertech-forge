@@ -3,11 +3,7 @@ package creepertech.client.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.primitives.Ints;
-
 import creepertech.client.model.cubes.Cube;
-import creepertech.item.CTItem;
-import creepertech.util.QuadHelper;
 import creepertech.util.Reference;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -16,10 +12,8 @@ import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.client.model.pipeline.LightUtil;
 
 public class BakedModelCTGunManual implements IBakedModel {
 	

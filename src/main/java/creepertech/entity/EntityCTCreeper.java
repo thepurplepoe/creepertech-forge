@@ -2,21 +2,18 @@ package creepertech.entity;
 
 import javax.annotation.Nullable;
 
-import creepertech.client.audio.SoundHandler;
 import creepertech.entity.ai.EntityAICTCreeperSwell;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAICreeperSwell;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityOcelot;
@@ -68,7 +65,8 @@ public class EntityCTCreeper extends EntityMob
         
     }
     
-    protected void initEntityAI()
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	protected void initEntityAI()
     {
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAICTCreeperSwell(this, fuseDistance, defuseDistance));

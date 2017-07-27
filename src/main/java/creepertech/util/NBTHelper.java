@@ -1,7 +1,5 @@
 package creepertech.util;
 
-import java.util.Random;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
