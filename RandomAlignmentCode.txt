@@ -1,0 +1,46 @@
+/*
+if (Keyboard.isKeyDown(Keyboard.KEY_I)) {
+	rotX += 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_K)) {
+	rotX -= 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_J)) {
+	rotY += 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_L)) {
+	rotY -= 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_U)) {
+	rotZ += 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_O)) {
+	rotZ -= 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_B)) {
+	tX += 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_M)) {
+	tX -= 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_G)) {
+	tY += 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_V)) {
+	tY -= 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_H)) {
+	tZ += 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_N)) {
+	tZ -= 0.02;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_SEMICOLON)) {
+	sc += 0.01;
+}
+if (Keyboard.isKeyDown(Keyboard.KEY_PERIOD)) {
+	sc -= 0.01;
+}
+
+Helper.writeInChat(rotX + " " + rotY + " " + rotZ + " " + tX + " " + tY + " " + tZ + " " + sc);
+*/
