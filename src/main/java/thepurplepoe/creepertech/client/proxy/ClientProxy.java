@@ -9,8 +9,10 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import thepurplepoe.api.API;
 import thepurplepoe.creepertech.client.model.ModelBaker;
 import thepurplepoe.creepertech.client.renderer.entity.RenderCTCreeper;
+import thepurplepoe.creepertech.client.renderer.entity.RenderProjectileBase;
 import thepurplepoe.creepertech.common.entity.EntityCTCreeper;
 import thepurplepoe.creepertech.common.entity.EntityNuclearCreeper;
+import thepurplepoe.creepertech.common.entity.EntityProjectileBase;
 import thepurplepoe.creepertech.common.proxy.CommonProxy;
 import thepurplepoe.creepertech.common.util.ModRef;
 
@@ -30,6 +32,13 @@ public class ClientProxy extends CommonProxy {
 			public Render<? super EntityNuclearCreeper> createRenderFor(RenderManager manager)
 			{
 				return new RenderCTCreeper(manager, 3);
+			}
+		});
+		RenderingRegistry.registerEntityRenderingHandler(EntityProjectileBase.class, new IRenderFactory<EntityProjectileBase>() {
+			@Override
+			public Render<EntityProjectileBase> createRenderFor(RenderManager manager)
+			{
+				return new RenderProjectileBase<EntityProjectileBase>(manager);
 			}
 		});
 	}

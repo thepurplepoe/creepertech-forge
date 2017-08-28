@@ -23,22 +23,24 @@ import thepurplepoe.creepertech.common.util.ModRef;
 public class PerspectiveModel implements IPerspectiveAwareModel {
 	private IBakedModel Model2d;
 	private IBakedModel Model3d;
+	private IBakedModel ModelSilencer;
 	
 	private String name;
 	
 	private TextureAtlasSprite sprite;
 
-	public PerspectiveModel(IBakedModel model2d, IBakedModel model3d, String itemName) {
+	public PerspectiveModel(IBakedModel model2d, IBakedModel model3d, String itemName, IBakedModel silencer) {
 	       super();
 	       Model2d = model2d;
 	       Model3d = model3d;
 	       sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(ModRef.modId + ":items/cttest");
 	       name = itemName;
+	       ModelSilencer = silencer;
 	}
 
 	@Override
 	public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) {
-		return null;
+		return Model3d.getQuads(state, side, rand);
 	}
 
 	@Override

@@ -1,13 +1,18 @@
 package thepurplepoe.creepertech.common.item;
 
+import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import thepurplepoe.api.items.ICustomModelledItem;
 import thepurplepoe.api.items.ItemWrapper;
+import thepurplepoe.creepertech.common.entity.EntityProjectileBase;
 
 public class ItemGunBase extends ItemWrapper implements ICustomModelledItem {
 	private float rotX = 0.08f;
@@ -23,6 +28,25 @@ public class ItemGunBase extends ItemWrapper implements ICustomModelledItem {
 	Matrix4f TPLH = new Matrix4f();
 	Matrix4f TPRH = new Matrix4f();
 	Matrix4f DEFAULT = new Matrix4f();
+	
+	public boolean Silenced = false;
+	
+	public float RecoilTime; // How long it takes for the recoil to take affect
+	public float RecoveryTime; // How long it takes for the recoil to be recovered
+	
+	public int FireDelay;
+	
+	public static String Initialized = "Initialized"; // Is the Gun Initialized
+	
+	public static String ShotReady = "ShotRecharged"; // Is the Gun ready to fire another shot
+	public static String ShotTime = "ShotTime"; // How many ticks since the gun last fired (Used for determining above)
+	
+	public static String Recoiling = "Recoiling"; // The gun is recoiling
+	public static String Recovering = "Recovering"; // The gun is recovering recoil
+	
+	public static String CRX = "CRX";
+	public static String CTY = "CTY";
+	public static String CTZ = "CTZ";
 
 	public ItemGunBase(String name) {
 		super(name);
@@ -76,10 +100,69 @@ public class ItemGunBase extends ItemWrapper implements ICustomModelledItem {
 	    DEFAULT.m23 = tZ;
 	    scale.set(sc, sc, sc);
 	    DEFAULT.scale(scale);
+	    
+		this.setMaxStackSize(1);
+		
+		FireDelay = 2;	
+		RecoilTime = 1000;
+		RecoveryTime = 500;
 	}
 	
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
-	{		
+	{
+		// No point doing all this if its on the ground / client + crashies
+		if (!(entityIn instanceof EntityPlayer)) {
+			return;
+		}
+		EntityPlayer p = (EntityPlayer)entityIn;
+		 
+		// Make sure all the variables are initialized
+		if (!GetBooleanVariable(stack, Initialized)) {
+			SetVariable(stack, Initialized, true);
+			SetVariable(stack, ShotReady, true);
+			SetVariable(stack, ShotTime, 0);
+			SetVariable(stack, Recoiling, false);
+			SetVariable(stack, Recovering, false);
+			SetVariable(stack, CRX, 0);
+			SetVariable(stack, CTY, 0);
+			SetVariable(stack, CTZ, 0);
+		}
+		 
+		// If the gun isnt ready to shoot
+		if (!GetBooleanVariable(stack, ShotReady)) {
+			// Increment this
+			IncrementVariable(stack, ShotTime, 1);	 
+			 
+			// If the shot is now ready to be ready
+			if (GetIntegerVariable(stack, ShotTime) >= FireDelay) {
+				// Make it ready and reset
+				SetVariable(stack, ShotReady, true);
+				SetVariable(stack, ShotTime, 0);
+			}
+		}
+		 
+		if (p.getHeldItemMainhand() == stack || p.getHeldItemOffhand() == stack) {	
+			if (Mouse.isButtonDown(1) && GetBooleanVariable(stack, ShotReady)) {
+				//Random r = new Random();
+				
+				
+				EntityProjectileBase entityarrow = new EntityProjectileBase(worldIn, p);
+                entityarrow.setAim(p, p.rotationPitch, p.rotationYaw, 0.0F, 4.5f, 1.0F);
+				
+                if (!worldIn.isRemote)
+                {
+                    worldIn.spawnEntityInWorld(entityarrow);
+                }
+                
+                SetVariable(stack, Recoiling, true);
+                SetVariable(stack, Recovering, false);
+
+                worldIn.playSound((EntityPlayer)null, p.posX, p.posY, p.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 1.5f);
+				 	 
+				// Make the gun unready to fire again
+				SetVariable(stack, ShotReady, false);
+			}
+		}
 	}
 
 	@Override

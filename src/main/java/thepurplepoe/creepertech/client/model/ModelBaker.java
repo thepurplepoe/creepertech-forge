@@ -31,7 +31,8 @@ public class ModelBaker {
 			if (model2D != null) {
 				try {
 					IBakedModel model3D = OBJLoader.INSTANCE.loadModel(new ResourceLocation(ModRef.modId + ":models/item/" + modelledItem.getItemName() + "3d.obj")).bake(TransformUtils.DEFAULT_ITEM, DefaultVertexFormats.ITEM, TextureUtils.bakedTextureGetter);
-					PerspectiveModel finalModel = new PerspectiveModel((IBakedModel)model2D, model3D, modelledItem.getItemName());
+					IBakedModel modelSilencer = OBJLoader.INSTANCE.loadModel(new ResourceLocation(ModRef.modId + ":models/item/m4a4silencer.obj")).bake(TransformUtils.DEFAULT_ITEM, DefaultVertexFormats.ITEM, TextureUtils.bakedTextureGetter);
+					PerspectiveModel finalModel = new PerspectiveModel((IBakedModel)model2D, model3D, modelledItem.getItemName(), modelSilencer);
 					event.getModelRegistry().putObject(modelLocation, finalModel);
 				} catch (Exception e) {
 					e.printStackTrace();

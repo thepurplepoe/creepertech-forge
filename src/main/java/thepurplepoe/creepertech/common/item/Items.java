@@ -16,18 +16,16 @@ public class Items {
 		detoniteCrystal = new ItemWrapper("detoniteCrystal");
 		speedStim = new ItemSingleUseStim("speedStim", "air_control");
 		m4a4 = new ItemGunBase("m4a4");
-		detoniteCrystal.setCreativeTab(CreeperTech.creativeTab);
-		speedStim.setCreativeTab(CreeperTech.creativeTab);
-		m4a4.setCreativeTab(CreeperTech.creativeTab);
-	}
-	
-	public static void register() {
-		API.registerItem(detoniteCrystal);
-		API.registerItem(speedStim);
-		API.registerItem(m4a4);
 		
 		Registry.putObject(detoniteCrystal.itemName, detoniteCrystal);
 		Registry.putObject(speedStim.itemName, speedStim);
 		Registry.putObject(m4a4.itemName, m4a4);
+	}
+	
+	public static void register() {
+		for (ItemWrapper item : Registry) {
+			item.setCreativeTab(CreeperTech.creativeTab);
+			API.registerItem(item);
+		}
 	}
 }

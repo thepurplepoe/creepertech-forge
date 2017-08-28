@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import thepurplepoe.creepertech.client.audio.SoundHandler;
 import thepurplepoe.creepertech.common.entity.EntityCTCreeper;
 import thepurplepoe.creepertech.common.entity.EntityNuclearCreeper;
+import thepurplepoe.creepertech.common.entity.EntityProjectileBase;
 import thepurplepoe.creepertech.common.item.Items;
 import thepurplepoe.creepertech.common.potion.PotionAirControl;
 import thepurplepoe.creepertech.common.proxy.CommonProxy;
@@ -71,6 +72,7 @@ public class CreeperTech {
 		// Register Entities
 		EntityRegistry.registerModEntity(EntityCTCreeper.class, "CreeperTechCreeper", 3, this, 64, 1, true, 1, 0);
 		EntityRegistry.registerModEntity(EntityNuclearCreeper.class, "NuclearCreeper", 4, this, 64, 1, true, 2, 0);
+		EntityRegistry.registerModEntity(EntityProjectileBase.class, "ProjectileBase", 5, this, 64, 1, true);
 	}
 	
 	/**
