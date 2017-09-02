@@ -151,7 +151,7 @@ public class ItemGunBase extends ItemWrapper implements ICustomModelledItem {
 				
                 if (!worldIn.isRemote)
                 {
-                    worldIn.spawnEntityInWorld(entityarrow);
+                    worldIn.spawnEntity(entityarrow);
                 }
                 
                 SetVariable(stack, Recoiling, true);

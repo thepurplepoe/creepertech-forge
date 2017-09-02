@@ -24,12 +24,12 @@ public class QuadHelper {
 	
 	public static BakedQuad createQuad(Vec3d v1, Vec3d v2, Vec3d v3, Vec3d v4, TextureAtlasSprite sprite) {
         Vec3d normal = v1.subtract(v2).crossProduct(v3.subtract(v2));
-        EnumFacing side = LightUtil.toSide((float) normal.xCoord, (float) normal.yCoord, (float) normal.zCoord);
+        EnumFacing side = LightUtil.toSide((float) normal.x, (float) normal.y, (float) normal.z);
         BakedQuad b = new BakedQuad(Ints.concat(
-                vertexToInts(v1.xCoord, v1.yCoord, v1.zCoord, 0, 0, sprite),
-                vertexToInts(v2.xCoord, v2.yCoord, v2.zCoord, 0, 16, sprite),
-                vertexToInts(v3.xCoord, v3.yCoord, v3.zCoord, 16, 16, sprite),
-                vertexToInts(v4.xCoord, v4.yCoord, v4.zCoord, 16, 0, sprite)
+                vertexToInts(v1.x, v1.y, v1.z, 0, 0, sprite),
+                vertexToInts(v2.x, v2.y, v2.z, 0, 16, sprite),
+                vertexToInts(v3.x, v3.y, v3.z, 16, 16, sprite),
+                vertexToInts(v4.x, v4.y, v4.z, 16, 0, sprite)
         ), -1, side, sprite, false, new VertexFormat());
         return b;
     }

@@ -6,9 +6,9 @@ public class MatrixHelper {
 	public static Matrix4x4 getTranslationMatrix(Vec3d translation) {
 		Matrix4x4 m = new Matrix4x4();
 		m.a=m.f=m.k=m.p=1;
-		m.d = translation.xCoord;
-		m.h = translation.yCoord;
-		m.l = translation.zCoord;
+		m.d = translation.x;
+		m.h = translation.y;
+		m.l = translation.z;
 		return m;
 	}
 	
@@ -48,17 +48,17 @@ public class MatrixHelper {
 	public static Matrix4x4 getScaleMatrix(Vec3d scalefactor) {
 		Matrix4x4 m = new Matrix4x4();
 		m.p=1;
-		m.a = scalefactor.xCoord;
-		m.f = scalefactor.yCoord;
-		m.k = scalefactor.zCoord;
+		m.a = scalefactor.x;
+		m.f = scalefactor.y;
+		m.k = scalefactor.z;
 		return m;
 	}
 	
 	public static Vec3d transformCoordinates(Matrix4x4 t, Vec3d c) {
 		Matrix1x4 coord = new Matrix1x4();
-		coord.a = c.xCoord;
-		coord.b = c.yCoord;
-		coord.c = c.zCoord;
+		coord.a = c.x;
+		coord.b = c.y;
+		coord.c = c.z;
 		coord.d = 1;
 		
 		Matrix1x4 out = new Matrix1x4();

@@ -15,12 +15,11 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformT
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.client.model.IPerspectiveAwareModel;
 import thepurplepoe.api.items.ICustomModelledItem;
 import thepurplepoe.creepertech.common.item.Items;
 import thepurplepoe.creepertech.common.util.ModRef;
 
-public class PerspectiveModel implements IPerspectiveAwareModel {
+public class PerspectiveModel implements IBakedModel {
 	private IBakedModel Model2d;
 	private IBakedModel Model3d;
 	private IBakedModel ModelSilencer;
@@ -82,8 +81,8 @@ public class PerspectiveModel implements IPerspectiveAwareModel {
         switch(cameraTransformType)
         {
         case GUI:
-            if(Model2d instanceof IPerspectiveAwareModel){
-                Pair<? extends IBakedModel, Matrix4f> result =((IPerspectiveAwareModel) Model2d).handlePerspective(cameraTransformType);
+            if(Model2d instanceof IBakedModel){
+                Pair<? extends IBakedModel, Matrix4f> result =((IBakedModel) Model2d).handlePerspective(cameraTransformType);
                 return result;
             }
             return Pair.of(this.Model2d,null);

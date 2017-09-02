@@ -3,7 +3,6 @@ package thepurplepoe.creepertech.common.entity;
 import javax.annotation.Nullable;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -29,7 +28,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.relauncher.Side;
@@ -109,11 +107,6 @@ public class EntityCTCreeper extends EntityMob
         super.entityInit();
         this.dataManager.register(STATE, Integer.valueOf(-1));
         this.dataManager.register(IGNITED, Boolean.valueOf(false));
-    }
-
-    public static void registerFixesCreeper(DataFixer fixer)
-    {
-        EntityLiving.registerFixesMob(fixer, "Creeper");
     }
 
     /**
@@ -206,9 +199,9 @@ public class EntityCTCreeper extends EntityMob
     {
         super.onDeath(cause);
 
-        if (this.worldObj.getGameRules().getBoolean("doMobLoot"))
+        if (this.world.getGameRules().getBoolean("doMobLoot"))
         {
-            if (cause.getEntity() instanceof EntitySkeleton)
+            if (cause.getTrueSource() instanceof EntitySkeleton)
             {
                 int i = Item.getIdFromItem(Items.RECORD_13);
                 int j = Item.getIdFromItem(Items.RECORD_WAIT);
@@ -258,10 +251,10 @@ public class EntityCTCreeper extends EntityMob
     {
         if (stack != null && stack.getItem() == Items.FLINT_AND_STEEL)
         {
-            this.worldObj.playSound(player, this.posX, this.posY, this.posZ, SoundEvents.ITEM_FLINTANDSTEEL_USE, this.getSoundCategory(), 1.0F, this.rand.nextFloat() * 0.4F + 0.8F);
+            this.world.playSound(player, this.posX, this.posY, this.posZ, SoundEvents.ITEM_FLINTANDSTEEL_USE, this.getSoundCategory(), 1.0F, this.rand.nextFloat() * 0.4F + 0.8F);
             player.swingArm(hand);
 
-            if (!this.worldObj.isRemote)
+            if (!this.world.isRemote)
             {
                 this.ignite();
                 stack.damageItem(1, player);
@@ -269,7 +262,7 @@ public class EntityCTCreeper extends EntityMob
             }
         }
 
-        return super.processInteract(player, hand, stack);
+        return super.processInteract(player, hand);
     }
 
     /**
@@ -277,11 +270,11 @@ public class EntityCTCreeper extends EntityMob
      */
     private void explode()
     {
-        if (!this.worldObj.isRemote)
+        if (!this.world.isRemote)
         {
-            boolean flag = this.worldObj.getGameRules().getBoolean("mobGriefing");
+            boolean flag = this.world.getGameRules().getBoolean("mobGriefing");
             this.dead = true;
-            this.worldObj.newExplosion(this, this.posX, this.posY, this.posZ, this.explosionRadius,false, flag);
+            this.world.newExplosion(this, this.posX, this.posY, this.posZ, this.explosionRadius,false, flag);
             this.setDead();
         }
     }
@@ -301,7 +294,7 @@ public class EntityCTCreeper extends EntityMob
      */
     public boolean isAIEnabled()
     {
-        return this.droppedSkulls < 1 && this.worldObj.getGameRules().getBoolean("doMobLoot");
+        return this.droppedSkulls < 1 && this.world.getGameRules().getBoolean("doMobLoot");
     }
 
     public void incrementDroppedSkulls()

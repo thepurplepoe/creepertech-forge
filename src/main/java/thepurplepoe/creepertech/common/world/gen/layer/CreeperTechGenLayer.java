@@ -1,7 +1,7 @@
 package thepurplepoe.creepertech.common.world.gen.layer;
 
 import net.minecraft.world.WorldType;
-import net.minecraft.world.gen.ChunkProviderSettings;
+import net.minecraft.world.gen.ChunkGeneratorSettings;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.GenLayerAddIsland;
 import net.minecraft.world.gen.layer.GenLayerAddMushroomIsland;
@@ -27,7 +27,7 @@ public abstract class CreeperTechGenLayer extends GenLayer {
 		super(p_i2125_1_);
 	}
 
-	public static GenLayer[] initializeAllBiomeGenerators(long seed, WorldType p_180781_2_, String p_180781_3_)
+	public static GenLayer[] initializeAllBiomeGenerators(long seed, WorldType p_180781_2_, ChunkGeneratorSettings p_180781_3_)
     {
         GenLayer genlayer = new GenLayerIsland(1L);
         genlayer = new GenLayerFuzzyZoom(2000L, genlayer);
@@ -51,11 +51,10 @@ public abstract class CreeperTechGenLayer extends GenLayer {
         int i = 6;
         int j = i;
 
-        if (p_180781_2_ == WorldType.CUSTOMIZED && !p_180781_3_.isEmpty())
+        if (p_180781_3_ != null)
         {
-            ChunkProviderSettings chunkprovidersettings = ChunkProviderSettings.Factory.jsonToFactory(p_180781_3_).build();
-            i = chunkprovidersettings.biomeSize;
-            j = chunkprovidersettings.riverSize;
+            i = p_180781_3_.biomeSize;
+            j = p_180781_3_.riverSize;
         }
 
         GenLayer lvt_8_1_ = GenLayerZoom.magnify(1000L, genlayer4, 0);

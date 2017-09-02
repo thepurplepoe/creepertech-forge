@@ -29,7 +29,7 @@ public class ItemSingleUseStim extends ItemWrapper {
         EntityPlayer entityplayer = entityLiving instanceof EntityPlayer ? (EntityPlayer)entityLiving : null;
 
         if (entityplayer == null || !entityplayer.capabilities.isCreativeMode) {
-            --stack.stackSize;
+            stack.setCount(stack.getCount() - 1);
         }
 
         if (!worldIn.isRemote) {

@@ -1,8 +1,9 @@
+/*
 package thepurplepoe.creepertech.common.world;
 
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
-import net.minecraft.world.chunk.IChunkGenerator;
+import net.minecraft.world.gen.IChunkGenerator;
 import thepurplepoe.creepertech.common.CreeperTech;
 import thepurplepoe.creepertech.common.world.biome.CTBiomeProvider;
 import thepurplepoe.creepertech.common.world.gen.CreeperTechChunkProvider;
@@ -40,3 +41,4 @@ public class CTWorldProvider extends WorldProvider {
 		return CreeperTech.creeperDimensionType;
 	}
 }
+*/

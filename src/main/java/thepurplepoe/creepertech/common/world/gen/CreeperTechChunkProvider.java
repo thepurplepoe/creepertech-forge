@@ -1,3 +1,4 @@
+/*
 package thepurplepoe.creepertech.common.world.gen;
 
 import java.util.List;
@@ -34,7 +35,7 @@ import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraft.world.gen.structure.MapGenVillage;
 import net.minecraft.world.gen.structure.StructureOceanMonument;
 
-public class CreeperTechChunkProvider implements IChunkGenerator
+public class CreeperTechChunkProvider implements net.minecraft.world.gen.IChunkGenerator
 {
     protected static final IBlockState STONE = Blocks.STONE.getDefaultState();
     private final Random rand;
@@ -558,3 +559,4 @@ public class CreeperTechChunkProvider implements IChunkGenerator
         }
     }
 }
+*/

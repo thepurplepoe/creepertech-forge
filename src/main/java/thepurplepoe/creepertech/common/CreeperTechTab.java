@@ -2,7 +2,7 @@ package thepurplepoe.creepertech.common;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class CreeperTechTab extends CreativeTabs {
 
@@ -11,8 +11,8 @@ public class CreeperTechTab extends CreativeTabs {
 	}
 
 	@Override
-	public Item getTabIconItem() {
-		return Items.BAKED_POTATO;
+	public ItemStack getTabIconItem() {
+		return new ItemStack(Items.BAKED_POTATO);
 	}
 
 }

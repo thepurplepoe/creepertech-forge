@@ -3,12 +3,13 @@ package thepurplepoe.api.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import thepurplepoe.creepertech.common.CreeperTech;
 
 public class BlockWrapper extends Block {
 	
-	protected String itemName;
+	public String itemName;
 	
 	public BlockWrapper(Material material, String name)  {
 		super(material);
@@ -23,7 +24,11 @@ public class BlockWrapper extends Block {
 		return this;
 	}
 
-	public void registerModel(ItemBlock itemBlock) {
+	public void registerModel(Item itemBlock) {
 		CreeperTech.proxy.registerItemRenderer(itemBlock, 0, itemName);
+	}
+	
+	public Item createItemBlock() {
+		return new ItemBlock(this);
 	}
 }

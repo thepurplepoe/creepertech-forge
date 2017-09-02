@@ -1,3 +1,4 @@
+/*
 package thepurplepoe.creepertech.common.world.biome;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeCache;
 import net.minecraft.world.biome.BiomeProvider;
+import net.minecraft.world.gen.ChunkGeneratorSettings;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraft.world.storage.WorldInfo;
@@ -35,7 +37,7 @@ public class CTBiomeProvider extends BiomeProvider {
     }
 	
 	
-    private CTBiomeProvider(long seed, WorldType worldTypeIn, String options) {
+    private CTBiomeProvider(long seed, WorldType worldTypeIn, ChunkGeneratorSettings options) {
         this();
         GenLayer[] agenlayer = (GenLayer[])CreeperTechGenLayer.initializeAllBiomeGenerators(seed, worldTypeIn, options);
         this.genBiomes = agenlayer[0];
@@ -202,4 +204,4 @@ public class CTBiomeProvider extends BiomeProvider {
         this.biomeCache.cleanupCache();
     }   
 }
-
+*/
