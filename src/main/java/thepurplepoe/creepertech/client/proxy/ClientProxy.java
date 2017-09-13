@@ -2,6 +2,7 @@ package thepurplepoe.creepertech.client.proxy;
 
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
@@ -56,5 +57,10 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerClientEvents() {
 		MinecraftForge.EVENT_BUS.register(new ModelBaker());
+	}
+	
+	@Override
+	public String localize(String unlocalized, Object... args) {
+		return I18n.format(unlocalized, args);
 	}
 }

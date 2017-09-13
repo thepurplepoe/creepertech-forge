@@ -16,13 +16,19 @@ public class Blocks {
 	
 	public static BlockWrapper creeperiteBlock;
 	public static BlockBoomBox boomBox;
+	public static BlockEnricher enricher;
+	public static BlockGenerator generator;
 
 	public static void setup() {
 		creeperiteBlock = new BlockWrapper(Material.ROCK, "creeperiteBlock");
 		boomBox = new BlockBoomBox(Material.CARPET, "boomBox");
+		enricher = new BlockEnricher(Material.ANVIL, "enricher");
+		generator = new BlockGenerator(Material.ANVIL, "generator");
 		
 		Registry.putObject(creeperiteBlock.itemName, creeperiteBlock);
 		Registry.putObject(boomBox.itemName, boomBox);
+		Registry.putObject(enricher.itemName, enricher);
+		Registry.putObject(generator.itemName, generator);
 	}
 	
 	public static void register(IForgeRegistry<Block> registry) {
@@ -32,6 +38,8 @@ public class Blocks {
 		}
 		
 		GameRegistry.registerTileEntity(boomBox.getTileEntityClass(), boomBox.getRegistryName().toString());
+		GameRegistry.registerTileEntity(enricher.getTileEntityClass(), enricher.getRegistryName().toString());
+		GameRegistry.registerTileEntity(generator.getTileEntityClass(), generator.getRegistryName().toString());
 	}
 	
 	public static void registerItemBlock(IForgeRegistry<Item> registry) {

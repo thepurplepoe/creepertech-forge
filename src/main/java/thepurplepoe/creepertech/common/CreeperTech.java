@@ -2,10 +2,7 @@ package thepurplepoe.creepertech.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
-import net.minecraft.potion.Potion;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.BiomeProperties;
@@ -19,15 +16,13 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import thepurplepoe.creepertech.client.audio.SoundHandler;
+import thepurplepoe.creepertech.CreeperTechGUIHandler;
 import thepurplepoe.creepertech.common.blocks.Blocks;
-import thepurplepoe.creepertech.common.entity.EntityCTCreeper;
-import thepurplepoe.creepertech.common.entity.EntityNuclearCreeper;
 import thepurplepoe.creepertech.common.entity.EntityProjectileBase;
 import thepurplepoe.creepertech.common.item.Items;
-import thepurplepoe.creepertech.common.potion.PotionAirControl;
 import thepurplepoe.creepertech.common.proxy.CommonProxy;
 import thepurplepoe.creepertech.common.util.ModRef;
 import thepurplepoe.creepertech.common.world.biome.BiomeCreeperForest;
@@ -66,6 +61,8 @@ public class CreeperTech {
 		// Initialize Items
 		Items.setup();
 		Blocks.setup();
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new CreeperTechGUIHandler());
 		
 		//Potion.REGISTRY.register(150, new ResourceLocation("air_control"), new PotionAirControl(false, 2445989).setPotionName("effect.aircontrol").setBeneficial());
 		

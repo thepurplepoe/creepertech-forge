@@ -1,6 +1,7 @@
 package thepurplepoe.creepertech.common.proxy;
 
 import net.minecraft.item.Item;
+import net.minecraft.util.text.translation.I18n;
 
 public class CommonProxy {
 	public void registerEntityRenderers() {		
@@ -13,5 +14,9 @@ public class CommonProxy {
 	}
 	
 	public void registerClientEvents() {
+	}
+
+	public String localize(String unlocalized, Object... args) {
+		return I18n.translateToLocalFormatted(unlocalized, args);
 	}
 }

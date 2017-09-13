@@ -1,0 +1,18 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"textures": {
+			"top": "creepertech:blocks/enrichertop",
+        	"front": "creepertech:blocks/enricherfrontoff",
+        	"side": "creepertech:blocks/enricherside"
+		}
+	},
+	"variants": {
+		"normal": {
+			"model": "orientable"
+		},
+		"inventory": {
+			"model": "orientable"
+		}
+	}
+}
