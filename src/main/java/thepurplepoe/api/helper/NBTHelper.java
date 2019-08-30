@@ -19,6 +19,21 @@ public class NBTHelper {
         return itemstack.getTagCompound().getInteger(s);
     }
 	
+	public static int getInteger(NBTTagCompound tag, String s)
+    {
+        if (tag == null)
+        {
+            tag = new NBTTagCompound();
+        }
+
+        if (!tag.hasKey(s))
+        {
+            setInteger(tag, s, 0);
+        }
+
+        return tag.getInteger(s);
+    }
+	
 	public static float getFloat(ItemStack itemstack, String s)
     {
         if (itemstack.getTagCompound() == null)
@@ -57,6 +72,16 @@ public class NBTHelper {
         }
 
         itemstack.getTagCompound().setInteger(s, i);
+    }
+    
+    public static void setInteger(NBTTagCompound tag, String s, int i)
+    {
+        if (tag == null)
+        {
+            tag = new NBTTagCompound();
+        }
+
+        tag.setInteger(s, i);
     }
     
     public static void setFloat(ItemStack itemstack, String s, float i)

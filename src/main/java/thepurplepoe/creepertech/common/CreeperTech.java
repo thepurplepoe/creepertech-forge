@@ -9,6 +9,7 @@ import net.minecraft.world.biome.Biome.BiomeProperties;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -103,7 +104,7 @@ public class CreeperTech {
 	public void postinit(FMLPostInitializationEvent event) {
 	}
 	
-	@Mod.EventBusSubscriber
+	@EventBusSubscriber
 	public static class Registration {
 		@SubscribeEvent
 		public static void registerItems(RegistryEvent.Register<Item> event) {

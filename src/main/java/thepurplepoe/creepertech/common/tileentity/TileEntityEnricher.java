@@ -1,17 +1,21 @@
 package thepurplepoe.creepertech.common.tileentity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.World;
 import thepurplepoe.creepertech.common.tileentity.machines.BaseMachine;
 import thepurplepoe.creepertech.common.util.Helper;
+import thepurplepoe.api.helper.NBTHelper;
 
 public class TileEntityEnricher extends BaseMachine {
 	
 	public TileEntityEnricher() {
 		super();
 		this.setMaxEnergy(300000);
-		this.setEnergyStored(50000);
 	}
 	
 	@Override
@@ -29,7 +33,8 @@ public class TileEntityEnricher extends BaseMachine {
         if (this.hasWorld()) {
         	if (!this.getWorld().isRemote) {
         		this.receiveEnergy(200);
-        		Helper.writeInChat("U: " + this.getEnergyStored());
+        		sendUpdates();
+        		this.markDirty();
         	}
         }
 	}
@@ -63,5 +68,4 @@ public class TileEntityEnricher extends BaseMachine {
 	public int getSizeInventory() {
 		return 3;
 	}
-
 }

@@ -6,6 +6,8 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
@@ -15,7 +17,6 @@ public abstract class BaseMachine extends TileEntity implements ISidedInventory,
 	private int energyStored = 0;
 	private int energyMax = 0;
 	
-	public World world;
 	public IBlockState block;
 	
 	private String machineCustomName;
@@ -120,19 +121,50 @@ public abstract class BaseMachine extends TileEntity implements ISidedInventory,
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
         ItemStackHelper.saveAllItems(compound, this.machineItemStacks);
         compound.setInteger("energy", energyStored);
         compound.setInteger("maxenergy", energyMax);
-		return super.writeToNBT(compound);
+		return compound;
+	}
+	
+	@Override
+	public NBTTagCompound getUpdateTag() {
+		return this.writeToNBT(new NBTTagCompound());
+	}
+	
+	@Override
+	public void handleUpdateTag(NBTTagCompound nbt) {
+		super.handleUpdateTag(nbt);
+		readFromNBT(nbt);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
         this.machineItemStacks = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.machineItemStacks);
         energyStored = compound.getInteger("energy");
         energyMax = compound.getInteger("maxenergy");
-		super.readFromNBT(compound);
+		
+	}
+	
+	public void sendUpdates() {
+		world.markBlockRangeForRenderUpdate(pos, pos);
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+		world.scheduleBlockUpdate(pos, this.getBlockType(), 0, 0);
+		markDirty();
+	}
+	
+	@Override 
+	public SPacketUpdateTileEntity getUpdatePacket() {
+		return new SPacketUpdateTileEntity(this.pos, 1, this.getUpdateTag());
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+		super.onDataPacket(net, pkt);
+		handleUpdateTag(pkt.getNbtCompound());
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import thepurplepoe.creepertech.common.inventory.ContainerEnricher;
 import thepurplepoe.creepertech.common.inventory.ContainerGenerator;
 import thepurplepoe.creepertech.common.tileentity.TileEntityEnricher;
 import thepurplepoe.creepertech.common.tileentity.TileEntityGenerator;
+import thepurplepoe.creepertech.common.util.Helper;
 
 public class CreeperTechGUIHandler implements IGuiHandler {
 	public static final int ENRICHER = 0;
@@ -35,6 +36,8 @@ public class CreeperTechGUIHandler implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID) {
 			case ENRICHER:
+				TileEntityEnricher tile = (TileEntityEnricher) world.getTileEntity(new BlockPos(x,y,z));
+				Helper.writeInChat(tile.getEnergyStored());
 				return new GUIEnricher(getServerGuiElement(ID, player, world, x, y, z), player.inventory, (TileEntityEnricher)world.getTileEntity((new BlockPos(x,y,z))));
 			case GENERATOR:
 				return new GUIGenerator(getServerGuiElement(ID, player, world, x, y, z), player.inventory);
