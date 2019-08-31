@@ -14,8 +14,8 @@ import thepurplepoe.creepertech.common.tileentity.TileEntityGenerator;
 public class ContainerGenerator extends Container {
 
 	public ContainerGenerator(InventoryPlayer playerInv, final TileEntityGenerator generator) {
-		IItemHandler inventory = generator.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
-		addSlotToContainer(new SlotItemHandler(inventory, 0, 80, 35) {
+		//IItemHandler inventory = generator.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
+		addSlotToContainer(new Slot(generator, 0, 80, 35) {
 			@Override
 			public void onSlotChanged() {
 				generator.markDirty();

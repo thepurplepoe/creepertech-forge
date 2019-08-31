@@ -13,15 +13,18 @@ public class Items {
 	public static ItemWrapper detoniteCrystal;
 	public static ItemSingleUseStim speedStim;
 	public static ItemGunBase m4a4;
+	public static ItemTeleporter teleporter;
 	
 	public static void setup() {
 		detoniteCrystal = new ItemWrapper("detoniteCrystal");
 		speedStim = new ItemSingleUseStim("speedStim", "air_control");
 		m4a4 = new ItemGunBase("m4a4");
+		teleporter = new ItemTeleporter("teleporter");
 		
 		Registry.putObject(detoniteCrystal.itemName, detoniteCrystal);
 		Registry.putObject(speedStim.itemName, speedStim);
 		Registry.putObject(m4a4.itemName, m4a4);
+		Registry.putObject(teleporter.itemName, teleporter);
 	}
 	
 	public static void register(IForgeRegistry<Item> registry) {

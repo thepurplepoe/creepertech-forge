@@ -49,7 +49,10 @@ public class TileEntityGenerator extends BaseMachine {
 	@Override
     public boolean isItemValidForSlot(int index, ItemStack stack)
     {
-        return (stack.getItem().getUnlocalizedName() == Item.getItemFromBlock(Blocks.generator).getUnlocalizedName());
+		if (stack != null) {
+			 return (stack.getItem().getUnlocalizedName() == Item.getItemFromBlock(Blocks.generator).getUnlocalizedName());
+		}
+		return false;
     }
 
 	@Override

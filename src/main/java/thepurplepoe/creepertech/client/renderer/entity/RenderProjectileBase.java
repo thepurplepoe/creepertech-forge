@@ -47,7 +47,7 @@ public class RenderProjectileBase<T extends EntityProjectileBase> extends Render
         float f6 = 0.15625F;
         float f7 = 0.3125F;
         float f8 = 0.05625F;
-        Helper.writeInChat(partialTicks);
+        //Helper.writeInChat(partialTicks);
         GlStateManager.enableRescaleNormal();
         float f9 = (float)entity.arrowShake - partialTicks;
 

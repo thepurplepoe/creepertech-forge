@@ -41,9 +41,10 @@ public class ItemSingleUseStim extends ItemWrapper {
         return stack;
     }
 
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
-        playerIn.setActiveHand(hand);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStackIn);
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+        playerIn.setActiveHand(handIn);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     }
     
     public int getMaxItemUseDuration(ItemStack stack) {

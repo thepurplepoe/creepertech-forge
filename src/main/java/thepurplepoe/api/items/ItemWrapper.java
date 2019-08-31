@@ -1,8 +1,12 @@
 package thepurplepoe.api.items;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.world.World;
 import thepurplepoe.api.helper.NBTHelper;
 import thepurplepoe.creepertech.common.CreeperTech;
 
@@ -75,5 +79,10 @@ public class ItemWrapper extends Item {
 	
 	public static String GetStringVariable(ItemStack stack, String variable) {
 		return NBTHelper.getString(stack, variable);
+	}
+
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 }
