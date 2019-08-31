@@ -1,13 +1,12 @@
 
 package thepurplepoe.creepertech.common.world;
 
-import net.minecraft.init.Biomes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.border.WorldBorder;
-import net.minecraft.world.gen.ChunkGeneratorHell;
+import net.minecraft.world.gen.ChunkGeneratorOverworld;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -20,7 +19,7 @@ public class CTWorldProvider extends WorldProvider {
     {
         this.biomeProvider = new BiomeProviderSingle(CreeperTech.CreeperForest);
         this.nether = false;
-        this.hasSkyLight = false;
+        this.hasSkyLight = true;
     }
 		
 	
@@ -49,7 +48,7 @@ public class CTWorldProvider extends WorldProvider {
 
     public IChunkGenerator createChunkGenerator()
     {
-        return new ChunkGeneratorHell(this.world, this.world.getWorldInfo().isMapFeaturesEnabled(), this.world.getSeed());
+    	return new ChunkGeneratorOverworld(this.world, this.world.getSeed(), this.world.getWorldInfo().isMapFeaturesEnabled(), this.world.getWorldInfo().getGeneratorOptions());
     }
 
     /**
@@ -68,13 +67,6 @@ public class CTWorldProvider extends WorldProvider {
         return false;
     }
 
-    /**
-     * Calculates the angle of sun and moon in the sky relative to a specified time (usually worldTime)
-     */
-    public float calculateCelestialAngle(long worldTime, float partialTicks)
-    {
-        return 0.5F;
-    }
 
     /**
      * True if the player can respawn in this dimension (true = overworld, false = nether).
@@ -82,15 +74,6 @@ public class CTWorldProvider extends WorldProvider {
     public boolean canRespawnHere()
     {
         return false;
-    }
-
-    /**
-     * Returns true if the given X,Z coordinate should show environmental fog.
-     */
-    @SideOnly(Side.CLIENT)
-    public boolean doesXZShowFog(int x, int z)
-    {
-        return true;
     }
 
     public WorldBorder createWorldBorder()

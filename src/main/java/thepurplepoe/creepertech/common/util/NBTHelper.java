@@ -116,6 +116,16 @@ public class NBTHelper {
         itemstack.getTagCompound().setBoolean(s, flag);
     }
     
+    public static boolean ReturnBooleanAndToggle(ItemStack itemstack, String s) {
+    	boolean bool = GetBoolean(itemstack, s);
+    	if (bool) {
+    		SetBoolean(itemstack, s, false);
+    	} else {
+    		SetBoolean(itemstack, s, true);
+    	}
+    	return bool;
+    }
+    
     public static String GetString(ItemStack itemstack, String s)
     {
         if (itemstack.getTagCompound() == null)

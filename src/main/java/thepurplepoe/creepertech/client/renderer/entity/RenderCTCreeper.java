@@ -7,10 +7,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import thepurplepoe.api.helper.Helper;
 import thepurplepoe.creepertech.client.model.ModelCTCreeper;
 import thepurplepoe.creepertech.common.entity.EntityCTCreeper;
-import thepurplepoe.creepertech.common.util.ModRef;
 
 @SideOnly(Side.CLIENT)
 public class RenderCTCreeper extends RenderLiving<EntityCTCreeper>

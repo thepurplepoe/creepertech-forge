@@ -8,7 +8,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import thepurplepoe.api.API;
-import thepurplepoe.api.helper.Helper;
 import thepurplepoe.creepertech.client.model.ModelBaker;
 import thepurplepoe.creepertech.client.renderer.entity.RenderCTCreeper;
 import thepurplepoe.creepertech.client.renderer.entity.RenderProjectileBase;
