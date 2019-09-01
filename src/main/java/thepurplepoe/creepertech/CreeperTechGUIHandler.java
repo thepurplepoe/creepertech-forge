@@ -37,7 +37,7 @@ public class CreeperTechGUIHandler implements IGuiHandler {
 		switch (ID) {
 			case ENRICHER:
 				TileEntityEnricher tile = (TileEntityEnricher) world.getTileEntity(new BlockPos(x,y,z));
-				Helper.writeInChat(tile.getEnergyStored());
+				//Helper.writeInChat(tile.getEnergyStored());
 				return new GUIEnricher(getServerGuiElement(ID, player, world, x, y, z), player.inventory, (TileEntityEnricher)world.getTileEntity((new BlockPos(x,y,z))));
 			case GENERATOR:
 				return new GUIGenerator(getServerGuiElement(ID, player, world, x, y, z), player.inventory);

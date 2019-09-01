@@ -32,8 +32,10 @@ public class GUIEnricher extends GuiContainer {
 		int y = (height - ySize) / 2;
 		drawTexturedModalRect(x, y - 10, 0, 0, xSize, ySize + 40);
 		int energyheight = (int) ((float)enricherInv.getEnergyStored() / (float)enricherInv.getMaxEnergyStored() * 91f);
-		Helper.writeInChat(enricherInv.getEnergyStored() + ":" + enricherInv.getMaxEnergyStored() + "=" + energyheight);
+		int progressheight = (int) ((float)enricherInv.currentoperationtime / (float)enricherInv.processtime * 22f);
+		//Helper.writeInChat(enricherInv.currentoperationtime + ":" + enricherInv.processtime + "=" + progressheight);
 		drawTexturedModalRect(x + 6, y + 8 + (91 - energyheight), 176, 91 - energyheight, 21, energyheight);
+		drawTexturedModalRect(x + 81, y + 50 - 12, 197, 0, 14, progressheight);
 	}
 
 	@Override

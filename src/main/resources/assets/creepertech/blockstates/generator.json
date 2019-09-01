@@ -9,10 +9,10 @@
 	},
 	"variants": {
 		"normal": {
-			"model": "cube_all"
+			"model": "orientable"
 		},
 		"inventory": {
-			"model": "cube_all"
+			"model": "orientable"
 		}
 	}
 }
